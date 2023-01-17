@@ -1,0 +1,7 @@
+parameters:
+    level: 7
+    paths:
+        - src
+    excludePaths:
+        - 'src/Exception/FlattenException.php'
+        - 'src/Business/Exception/Renderer/HtmlRenderer.php'
