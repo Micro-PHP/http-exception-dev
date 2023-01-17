@@ -1,5 +1,5 @@
 {
-    "name": "micro/plugin-http-exceptions",
+    "name": "micro/plugin-http-exceptions-dev",
     "description": "Micro Framework: Exception response builder.",
     "license": "MIT",
     "type": "micro-plugin",
@@ -15,9 +15,12 @@
     "require-dev": {
         "ergebnis/composer-normalize": "^2.29",
         "friendsofphp/php-cs-fixer": "^3.13",
+        "micro/plugin-http-exceptions": "^1",
+        "micro/plugin-http-router-code": "^1",
         "phpstan/phpstan": "^1.9",
         "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.5",
+        "symfony/var-dumper": "^6",
         "vimeo/psalm": "^5.2"
     },
     "autoload": {
