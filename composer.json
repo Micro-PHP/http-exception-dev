@@ -10,11 +10,12 @@
         }
     ],
     "require": {
-        "micro/plugin-http-core": "^1"
+        "micro/plugin-http-core": "^1.6"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.29",
         "friendsofphp/php-cs-fixer": "^3.13",
+        "micro/kernel-app": "^1.6",
         "micro/plugin-http-exceptions": "^1",
         "micro/plugin-http-router-code": "^1",
         "phpstan/phpstan": "^1.9",
