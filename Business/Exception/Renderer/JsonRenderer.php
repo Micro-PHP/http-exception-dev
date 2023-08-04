@@ -11,9 +11,9 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Business\Exception\Renderer;
+namespace Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer;
 
-use Micro\Plugin\Http\Exception\FlattenException;
+use Micro\Plugin\HttpExceptionsDev\Exception\FlattenException;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>

@@ -11,14 +11,14 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Test\Unit;
+namespace Micro\Plugin\HttpExceptionsDev\Tests\Unit;
 
-use Micro\Framework\Kernel\Configuration\DefaultApplicationConfiguration;
-use Micro\Kernel\App\AppKernel;
-use Micro\Plugin\Http\Business\Route\RouteBuilderInterface;
-use Micro\Plugin\Http\Business\Route\RouteInterface;
-use Micro\Plugin\Http\Exception\HttpException;
-use Micro\Plugin\Http\Facade\HttpFacadeInterface;
+use Micro\Framework\BootConfiguration\Configuration\DefaultApplicationConfiguration;
+use Micro\Framework\KernelApp\AppKernel;
+use Micro\Plugin\HttpCore\Business\Route\RouteBuilderInterface;
+use Micro\Plugin\HttpCore\Business\Route\RouteInterface;
+use Micro\Plugin\HttpCore\Exception\HttpException;
+use Micro\Plugin\HttpCore\Facade\HttpFacadeInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 

@@ -11,12 +11,12 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Test\Unit;
+namespace Micro\Plugin\HttpExceptionsDev\Tests\Unit;
 
-use Micro\Framework\Kernel\Plugin\PluginDependedInterface;
-use Micro\Plugin\Http\Facade\HttpFacadeInterface;
-use Micro\Plugin\Http\HttpExceptionResponseDevPlugin;
-use Micro\Plugin\Http\HttpExceptionResponsePlugin;
+use Micro\Framework\BootPluginDependent\Plugin\PluginDependedInterface;
+use Micro\Plugin\HttpCore\Facade\HttpFacadeInterface;
+use Micro\Plugin\HttpExceptionsDev\HttpExceptionResponseDevPlugin;
+use Micro\Plugin\HttpExceptions\HttpExceptionResponsePlugin;
 use Micro\Plugin\Http\HttpRouterCodePlugin;
 use Micro\Plugin\Http\Plugin\RouteProviderPluginInterface;
 use Symfony\Component\HttpFoundation\Response;

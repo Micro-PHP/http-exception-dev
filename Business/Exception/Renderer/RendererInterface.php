@@ -11,14 +11,12 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Business\Exception\Renderer;
-
-use Symfony\Component\HttpFoundation\Request;
+namespace Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>
  */
-interface RendererFactoryInterface
+interface RendererInterface
 {
-    public function create(Request $request): RendererInterface;
+    public function render(\Throwable $throwable): string;
 }

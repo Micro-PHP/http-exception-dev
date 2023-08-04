@@ -11,20 +11,21 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http;
+namespace Micro\Plugin\HttpExceptionsDev;
 
-use Micro\Component\DependencyInjection\Container;
-use Micro\Framework\Kernel\Plugin\ConfigurableInterface;
-use Micro\Framework\Kernel\Plugin\DependencyProviderInterface;
-use Micro\Framework\Kernel\Plugin\PluginConfigurationTrait;
-use Micro\Framework\Kernel\Plugin\PluginDependedInterface;
-use Micro\Plugin\Http\Business\Exception\Renderer\RendererFactory;
-use Micro\Plugin\Http\Business\Exception\Renderer\RendererFactoryInterface;
-use Micro\Plugin\Http\Business\Executor\HttpExceptionPageExecutorDecoratorFactory;
-use Micro\Plugin\Http\Business\Executor\RouteExecutorFactoryInterface;
-use Micro\Plugin\Http\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
-use Micro\Plugin\Http\Decorator\HttpFacadeExceptionDevDecorator;
-use Micro\Plugin\Http\Facade\HttpFacadeInterface;
+use Micro\Framework\DependencyInjection\Container;
+use Micro\Framework\BootConfiguration\Plugin\ConfigurableInterface;
+use Micro\Framework\BootDependency\Plugin\DependencyProviderInterface;
+use Micro\Framework\BootConfiguration\Plugin\PluginConfigurationTrait;
+use Micro\Framework\BootPluginDependent\Plugin\PluginDependedInterface;
+use Micro\Plugin\HttpCore\Business\Executor\RouteExecutorFactoryInterface;
+use Micro\Plugin\HttpCore\Facade\HttpFacadeInterface;
+use Micro\Plugin\HttpCore\HttpCorePlugin;
+use Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer\RendererFactory;
+use Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer\RendererFactoryInterface;
+use Micro\Plugin\HttpExceptionsDev\Business\Executor\HttpExceptionPageExecutorDecoratorFactory;
+use Micro\Plugin\HttpExceptionsDev\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
+use Micro\Plugin\HttpExceptionsDev\Decorator\HttpFacadeExceptionDevDecorator;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>

@@ -11,10 +11,10 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http;
+namespace Micro\Plugin\HttpExceptionsDev;
 
-use Micro\Framework\Kernel\Configuration\PluginConfiguration;
-use Micro\Plugin\Http\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
+use Micro\Framework\BootConfiguration\Configuration\PluginConfiguration;
+use Micro\Plugin\HttpExceptionsDev\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>

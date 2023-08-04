@@ -11,10 +11,11 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Business\Executor;
+namespace Micro\Plugin\HttpExceptionsDev\Business\Executor;
 
-use Micro\Plugin\Http\Business\Exception\Renderer\RendererFactoryInterface;
-use Micro\Plugin\Http\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
+use Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer\RendererFactoryInterface;
+use Micro\Plugin\HttpExceptionsDev\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
+use Micro\Plugin\HttpCore\Business\Executor\RouteExecutorFactoryInterface;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>

@@ -11,11 +11,11 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Test\Unit;
+namespace Micro\Plugin\HttpExceptionsDev\Tests\Unit;
 
-use Micro\Framework\Kernel\Configuration\DefaultApplicationConfiguration;
-use Micro\Plugin\Http\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
-use Micro\Plugin\Http\HttpExceptionResponseDevPluginConfiguration;
+use Micro\Framework\BootConfiguration\Configuration\DefaultApplicationConfiguration;
+use Micro\Plugin\HttpExceptionsDev\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
+use Micro\Plugin\HttpExceptionsDev\HttpExceptionResponseDevPluginConfiguration;
 use PHPUnit\Framework\TestCase;
 
 class HttpExceptionResponseDevPluginConfigurationTest extends TestCase

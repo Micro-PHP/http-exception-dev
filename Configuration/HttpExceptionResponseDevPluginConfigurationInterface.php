@@ -11,12 +11,16 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Business\Exception\Renderer;
+namespace Micro\Plugin\HttpExceptionsDev\Configuration;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>
  */
-interface RendererInterface
+interface HttpExceptionResponseDevPluginConfigurationInterface
 {
-    public function render(\Throwable $throwable): string;
+    public function getProjectDir(): string;
+
+    public function isDevMode(): bool;
+
+    public function getPriorityDecoration(): int;
 }

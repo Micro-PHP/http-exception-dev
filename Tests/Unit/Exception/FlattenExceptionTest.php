@@ -11,9 +11,9 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Test\Unit\Exception;
+namespace Micro\Plugin\HttpExceptionsDev\Tests\Unit\Exception;
 
-use Micro\Plugin\Http\Exception\FlattenException;
+use Micro\Plugin\HttpExceptionsDev\Exception\FlattenException;
 use PHPUnit\Framework\TestCase;
 
 class FlattenExceptionTest extends TestCase

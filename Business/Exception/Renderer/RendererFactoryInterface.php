@@ -11,16 +11,14 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Configuration;
+namespace Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer;
+
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>
  */
-interface HttpExceptionResponseDevPluginConfigurationInterface
+interface RendererFactoryInterface
 {
-    public function getProjectDir(): string;
-
-    public function isDevMode(): bool;
-
-    public function getPriorityDecoration(): int;
+    public function create(Request $request): RendererInterface;
 }

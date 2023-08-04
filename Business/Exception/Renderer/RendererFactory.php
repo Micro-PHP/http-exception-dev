@@ -11,9 +11,9 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Http\Business\Exception\Renderer;
+namespace Micro\Plugin\HttpExceptionsDev\Business\Exception\Renderer;
 
-use Micro\Plugin\Http\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
+use Micro\Plugin\HttpExceptionsDev\Configuration\HttpExceptionResponseDevPluginConfigurationInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
