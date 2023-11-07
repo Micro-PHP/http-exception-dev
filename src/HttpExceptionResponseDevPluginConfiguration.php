@@ -22,7 +22,7 @@ use Micro\Plugin\Http\Configuration\HttpExceptionResponseDevPluginConfigurationI
 class HttpExceptionResponseDevPluginConfiguration extends PluginConfiguration implements HttpExceptionResponseDevPluginConfigurationInterface
 {
     public const CFG_DECORATED_WEIGHT = 'MICRO_HTTP_EXCEPTION_DEV_PAGE_DECORATION_WEIGHT';
-    public const DECORATED_DEFAULT = 200;
+    public const DECORATED_DEFAULT = 1001;
 
     public function getProjectDir(): string
     {
