@@ -21,6 +21,7 @@ use Micro\Plugin\Http\Exception\HttpException;
 use Micro\Plugin\Http\Facade\HttpFacadeInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>
@@ -72,44 +73,40 @@ class HttpExceptionPagePluginTest extends TestCase
     /**
      * @dataProvider dataProviderException
      */
-    public function testExceptionResponse(string $env, string $uri, bool $isFlush, mixed $result, string $format)
+    public function testExceptionResponse(string $env, string $uri, bool $isFlush, mixed $result, string $format): void
     {
         $kernel = $this->createKernel($env);
         $request = Request::create($uri);
         $request->request->set('_format', $format);
 
         $isDev = str_starts_with($env, 'dev');
+        if (!$isDev) {
+            $this->expectException(HttpException::class);
+        }
+
         preg_match('/\d+/', $uri, $match);
         $exceptionCode = (int) $match[0];
 
-        $this->expectException(HttpException::class);
-        $this->expectExceptionCode($exceptionCode);
-
-        ob_start();
-
-        try {
+        if (!$isDev) {
             $response = $kernel->container()->get(HttpFacadeInterface::class)
                 ->execute($request, $isFlush);
-
-            $flushedContent = ob_get_clean();
-        } catch (HttpException $httpException) {
-            $flushedContent = ob_get_clean();
-
-            if ($isFlush) {
-                if ('json' === $format) {
-                    $this->assertJson($flushedContent);
-                }
-
-                if ('html' === $format) {
-                    $this->assertStringStartsWith('<!--', $flushedContent);
-                    $this->assertStringEndsWith('-->', $flushedContent);
-                }
-            }
-
-            throw $httpException;
+        } else {
+            ob_start();
+            /** @var Response $response */
+            $response = $kernel->container()->get(HttpFacadeInterface::class)
+                ->execute($request, $isFlush);
+            $flushedContent = ob_get_contents();
+            ob_end_clean();
         }
 
         $responseContent = $response->getContent();
+
+        $this->assertEquals($exceptionCode, $response->getStatusCode());
+
+        if ($isFlush) {
+            $this->assertEquals($responseContent, $flushedContent);
+        }
+
         if ('html' === $format) {
             $this->assertStringStartsWith('<!--', $responseContent);
             $this->assertStringEndsWith('-->', $responseContent);
@@ -118,15 +115,12 @@ class HttpExceptionPagePluginTest extends TestCase
         if ('json' === $format) {
             $this->assertJson($responseContent);
         }
-
-        $this->assertStringEndsWith($responseContent, $flushedContent);
-        $this->assertStringStartsWith($responseContent, $flushedContent);
     }
 
     /**
      * @dataProvider dataProviderSuccess
      */
-    public function testSuccessResponse(string $env, string $uri, bool $isFlush, mixed $result, string $format)
+    public function testSuccessResponse(string $env, string $uri, bool $isFlush, mixed $result, string $format): void
     {
         $kernel = $this->createKernel($env);
         $request = Request::create($uri);
@@ -139,11 +133,11 @@ class HttpExceptionPagePluginTest extends TestCase
 
         $responseFlushedContent = ob_get_clean();
 
-        $this->assertEquals($isFlush ? $result : '', $responseFlushedContent);
+        $this->assertEquals($isFlush ? $result : false, $responseFlushedContent);
         $this->assertEquals($result, $response->getContent());
     }
 
-    public function dataProviderSuccess()
+    public function dataProviderSuccess(): array
     {
         return [
             ['dev', '/', true, 'Hello, world', 'html'],
@@ -159,7 +153,7 @@ class HttpExceptionPagePluginTest extends TestCase
         ];
     }
 
-    public function dataProviderException()
+    public function dataProviderException(): array
     {
         return [
             ['dev', '/404', true, null, 'html'],

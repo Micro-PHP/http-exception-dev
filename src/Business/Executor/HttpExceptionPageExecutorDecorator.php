@@ -45,10 +45,6 @@ readonly class HttpExceptionPageExecutorDecorator implements RouteExecutorInterf
 
             return $response;
         } catch (\Throwable $throwable) {
-            if (!$flush) {
-                throw $throwable;
-            }
-
             $content = $this->rendererFactory
                 ->create($request)
                 ->render($throwable);
@@ -59,21 +55,20 @@ readonly class HttpExceptionPageExecutorDecorator implements RouteExecutorInterf
             }
 
             $contentType = $request->get('_format', 'text/html');
-            switch ($contentType) {
-                case 'json':
-                    $contentType = 'application/json';
-                    break;
-                default:
-                    $contentType = 'text/html';
-            }
+            $contentType = match ($contentType) {
+                'json' => 'application/json',
+                default => 'text/html',
+            };
 
             $response = new Response($content, $statusCode, [
                 'content-type' => $contentType,
             ]);
 
-            $response->send();
+            if ($flush) {
+                $response->send();
+            }
 
-            throw $throwable;
+            return $response;
         }
     }
 }
