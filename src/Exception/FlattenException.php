@@ -52,7 +52,7 @@ class FlattenException
             }
         }
 
-        $statusCode = $exception->getCode();
+        $statusCode = $exception->getCode() ?: 0;
 
         $e->setMessage($realException->getMessage());
         $e->setCode($statusCode);
